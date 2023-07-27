@@ -5,7 +5,6 @@ module.exports.createReview = async (req, res) => {
     const car = await Car.findById(req.params.id);
     const review = new Review(req.body.review);
     review.author = req.user._id;
-    console.log(req.user);
     car.reviews.push(review);
     await review.save();
     await car.save();

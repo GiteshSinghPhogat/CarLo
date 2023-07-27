@@ -15,8 +15,6 @@ module.exports.createCar = async (req, res) => {
     const car = new Car(req.body.car);
     car.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     car.author = req.user._id;
-    // console.log("create");
-    // console.log(car);
     await car.save();
     req.flash('success', 'Successfully added a new car');
     res.redirect(`/cars/${car._id}`);
@@ -24,7 +22,7 @@ module.exports.createCar = async (req, res) => {
 
 module.exports.showCar = async (req, res) => {
     const cars = await Car.findById(req.params.id).populate({ path: 'reviews', populate: { path: 'author' } }).populate('author');
-    // console.log(cars);
+
     if (!cars) {
         req.flash('error', "Car don't exist.");
         return res.redirect('/cars');
@@ -43,7 +41,7 @@ module.exports.renderEditForm = async (req, res) => {
 
 module.exports.updateCar = async (req, res) => {
     const imgs = req.files.map(f => ({ url: f.path, filename: f.filename }));
-    // console.log(req.body);
+
     const ucar = await Car.findByIdAndUpdate(req.params.id, { ...req.body.car });
     ucar.images.push(...imgs);
     await ucar.save();

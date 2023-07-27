@@ -58,7 +58,7 @@
         </div>
         <div class="col-6">
             <% if(currentUser) {%>
-                <h2 class="mb-3">Leave a Review</h2>
+                <h2 class="mb-3 text-white">Leave a Review</h2>
                 <form action="/cars/<%= cars._id %>/reviews" method="POST" class="mb-3 validated-form" novalidate>
                     <div class="">
                         <!-- <label class="form-label" for="rating">Rating</label>
@@ -79,7 +79,7 @@
                         </fieldset>
                     </div>
                     <div class="mb-3">
-                        <label class="form-label" for="body">Review</label>
+                        <label class="form-label text-white" for="body">Review</label>
                         <textarea class="form-control" name="review[body]" id="body" cols="30" rows="3"
                             required></textarea>
                         <div class="valid-feedback">

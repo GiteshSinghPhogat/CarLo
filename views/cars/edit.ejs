@@ -6,17 +6,17 @@
             <form action="/cars/<%= car._id %>?_method=PUT" method="POST" novalidate class="validated-form"
                 enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label for="title" class="from-label">Title</label>
+                    <label for="title" class="from-label text-white">Title</label>
                     <input class="form-control" type="text" id="title" name="car[title]" value="<%= car.title %>"
                         required>
                 </div>
                 <div class="mb-3">
-                    <label for="location" class="from-label">Location</label>
+                    <label for="location" class="from-label text-white">Location</label>
                     <input class="form-control" type="text" id="location" name="car[location]"
                         value="<%= car.location %>" required>
                 </div>
                 <div class="mb-3">
-                    <label for="Price" class="from-label">Price</label>
+                    <label for="Price" class="from-label text-white">Price</label>
                     <div class="input-group">
                         <span class="input-group-text" id="price-label">Rs</span>
                         <input type="text" class="form-control" id="Price" placeholder="0.00" aria-label="Username"
@@ -25,21 +25,22 @@
                 </div>
 
                 <div class="mb-3">
-                    <label for="formFileMultiple" class="form-label">Add Images(s)</label>
+                    <label for="formFileMultiple" class="form-label text-white">Add Images(s)</label>
                     <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
                 </div>
                 <div class="mb-3">
-                    <label for="description" class="from-label">Description</label>
+                    <label for="description" class="from-label text-white">Description</label>
                     <textarea class="form-control" type="text" id="description" name="car[description]"
                         required><%= car.description %></textarea>
                 </div>
-                <div class="mb-3">
+                <div class="mb-3 ">
                     <% car.images.forEach((img, i)=> { %>
                         <img src="<%= img.thumbnail %>" class="img-thumbnail">
                         <div class="from-check-inline">
                             <input type="checkbox" id="<%= i%>" name="deleteImg[]" value="<%= img.filename %>">
+                            <label for="<%= i %>" class="text-white">Delete?</label>
                         </div>
-                        <label for="<%= i %>">Delete?</label>
+
                         <% }); %>
                 </div>
                 <div class="mb-3">
@@ -47,7 +48,7 @@
                 </div>
 
             </form>
-            <a href="/cars/<%= car._id%>">Cancel</a>
+            <a href="/cars/<%= car._id%>" class="btn btn-danger mb-3">Cancel</a>
         </div>
 
     </div>
