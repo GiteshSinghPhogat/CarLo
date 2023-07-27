@@ -14,7 +14,7 @@ const reviewsRoutes = require('./routes/reviews');
 const userRoutes = require('./routes/users');
 const ExpressError = require('./utilis/ExpressError');
 const mongoSanitize = require('express-mongo-sanitize');
-// const helmet = require('helmet');
+const helmet = require('helmet');
 const User = require('./models/user');
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(mongoSanitize({
     replaceWith: '_'
 }));
-// app.use(helmet({ contentSecurityPolicy: false }));
+app.use(helmet({ contentSecurityPolicy: false }));
 
 const secret = 'Bettersecretthangitesh';
 const store = new MongoDBStore({
