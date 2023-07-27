@@ -1,0 +1,36 @@
+<% layout('layouts/boilerplate') %>
+
+    <h1>My Cars</h1>
+    <div>
+        <a href="/cars/new" class="btn btn-dark mb-3">Add Car</a>
+        <a href="/cars" class="btn btn-dark mb-3 ms-2"> All Cars</a>
+    </div>
+
+    <% for(let car of cars) { %>
+        <% if(car.author.equals(currentUser._id)){ %>
+            <div class="card mb-3">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- <h1>Image</h1> -->
+                        <img class="img-fluid" src=" <%= car.images[0].url %> " alt="">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= car.title %>
+                            </h5>
+                            <p class="card-text">
+                                <%= car.description %>
+                            </p>
+                            <p>
+                                <small>
+                                    <%= car.location %>
+                                </small>
+                            </p>
+                            <a class="btn btn-dark" href="/cars/<%= car._id %>">View <%= car.title %></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% }%>
+                <% } %>

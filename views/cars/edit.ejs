@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">Edit Car</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/cars/<%= car._id %>?_method=PUT" method="POST" novalidate class="validated-form"
+                enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="from-label">Title</label>
+                    <input class="form-control" type="text" id="title" name="car[title]" value="<%= car.title %>"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="from-label">Location</label>
+                    <input class="form-control" type="text" id="location" name="car[location]"
+                        value="<%= car.location %>" required>
+                </div>
+                <div class="mb-3">
+                    <label for="Price" class="from-label">Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">Rs</span>
+                        <input type="text" class="form-control" id="Price" placeholder="0.00" aria-label="Username"
+                            aria-describedby="price-label" name="car[price]" value="<%= car.price %>" required>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="formFileMultiple" class="form-label">Add Images(s)</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="from-label">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="car[description]"
+                        required><%= car.description %></textarea>
+                </div>
+                <div class="mb-3">
+                    <% car.images.forEach((img, i)=> { %>
+                        <img src="<%= img.thumbnail %>" class="img-thumbnail">
+                        <div class="from-check-inline">
+                            <input type="checkbox" id="<%= i%>" name="deleteImg[]" value="<%= img.filename %>">
+                        </div>
+                        <label for="<%= i %>">Delete?</label>
+                        <% }); %>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Update</button>
+                </div>
+
+            </form>
+            <a href="/cars/<%= car._id%>">Cancel</a>
+        </div>
+
+    </div>

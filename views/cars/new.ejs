@@ -1,0 +1,52 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="row">
+        <h1 class="text-center">New Car</h1>
+        <div class="col-md-6 offset-md-3">
+            <form action="/cars" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label for="title" class="from-label">Title</label>
+                    <input class="form-control" type="text" id="title" name="car[title]" required>
+                    <div class="valid-feedback">
+                        Correct!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="from-label">Location</label>
+                    <input class="form-control" type="text" id="location" name="car[location]" required>
+                    <div class="valid-feedback">
+                        Correct!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="Price" class="from-label">Price</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="price-label">Rs</span>
+                        <input type="text" class="form-control" id="Price" placeholder="0.00" aria-label="Username"
+                            aria-describedby="price-label" name="car[price]" required>
+                    </div>
+                    <div class="valid-feedback">
+                        Correct!
+                    </div>
+                </div>
+                <div class="mb-3 custom-file">
+                    <label for="formFileMultiple" class="form-label">Add Images(s)</label>
+                    <input class="form-control" type="file" id="formFileMultiple" name="image" multiple>
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="from-label">Description</label>
+                    <textarea class="form-control" type="text" id="description" name="car[description]"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        Correct!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-success">Add Car</button>
+                </div>
+
+            </form>
+            <a href="/cars" class="btn btn-danger mb-3">Cancel</a>
+        </div>
+
+    </div>
